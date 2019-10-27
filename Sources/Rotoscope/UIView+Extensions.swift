@@ -19,6 +19,8 @@ extension UIView {
     
     @objc func rts_didMoveToSuperview() {
         rts_didMoveToSuperview()
-        viewReferences.add(self)
+        if self.superview != nil {
+            viewReferences.add(self)
+        }
     }
 }
