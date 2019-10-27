@@ -15,10 +15,15 @@ fileprivate class WeakObject<T: AnyObject>: Equatable, Hashable {
         self.object = object
     }
     
-    func hash(into hasher: inout Hasher) {
-        if let object = self.object {
-            hasher.combine(ObjectIdentifier(object).hashValue)
-        }
+//    func hash(into hasher: inout Hasher) {
+//        if let object = self.object {
+//            hasher.combine(ObjectIdentifier(object).hashValue)
+//        }
+//    }
+    
+    public var hashValue: Int {
+        if let object = self.object { return ObjectIdentifier(object).hashValue }
+        else { return 0 }
     }
 
     public static func == <T> (lhs: WeakObject<T>, rhs: WeakObject<T>) -> Bool {
