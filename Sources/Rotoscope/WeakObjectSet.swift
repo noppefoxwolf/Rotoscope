@@ -16,7 +16,9 @@ fileprivate class WeakObject<T: AnyObject & Hashable>: Equatable, Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(object!)
+        if let object = object {
+            hasher.combine(object)
+        }
     }
 
     public static func == <T> (lhs: WeakObject<T>, rhs: WeakObject<T>) -> Bool {
