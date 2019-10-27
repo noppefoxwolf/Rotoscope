@@ -7,8 +7,6 @@
 
 import UIKit
 
-public protocol Trackable {}
-
 extension UIView {
     private static var isTrackingEnabled: Bool = false
     
@@ -22,7 +20,7 @@ extension UIView {
     @objc func rts_didMoveToSuperview() {
         rts_didMoveToSuperview()
         
-        if let trackableView = self as? UIView & Trackable {
+        if let trackableView = self as? UITableView {
             if !viewReferences.contains(trackableView) {
                 viewReferences.add(trackableView)
             }
