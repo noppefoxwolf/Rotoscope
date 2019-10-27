@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate class WeakObject<T: AnyObject>: Equatable, Hashable {
+fileprivate class WeakObject<T: AnyObject & Hashable>: Equatable, Hashable {
 
     weak var object: T?
 
@@ -15,15 +15,8 @@ fileprivate class WeakObject<T: AnyObject>: Equatable, Hashable {
         self.object = object
     }
     
-//    func hash(into hasher: inout Hasher) {
-//        if let object = self.object {
-//            hasher.combine(ObjectIdentifier(object).hashValue)
-//        }
-//    }
-    
-    public var hashValue: Int {
-        if let object = self.object { return ObjectIdentifier(object).hashValue }
-        else { return 0 }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(object!)
     }
 
     public static func == <T> (lhs: WeakObject<T>, rhs: WeakObject<T>) -> Bool {
@@ -32,7 +25,7 @@ fileprivate class WeakObject<T: AnyObject>: Equatable, Hashable {
 }
 
 
-public class WeakObjectSet<T: AnyObject>: Sequence {
+public class WeakObjectSet<T: AnyObject & Hashable>: Sequence {
 
     private var _objects: Set<WeakObject<T>>
     

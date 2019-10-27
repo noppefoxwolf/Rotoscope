@@ -4,9 +4,12 @@ import XCTest
 final class WeakObjectTests: XCTestCase {
     func testExample() {
         let obj = Object()
+        let obj2 = Object()
         let set = WeakObjectSet<Object>([])
         set.add(obj)
-        set.add(obj)
+        print(set.map({ $0 }))
+        set.add(obj2)
+        print(set.map({ $0 }))
     }
 
     static var allTests = [
@@ -14,6 +17,14 @@ final class WeakObjectTests: XCTestCase {
     ]
 }
 
-class Object {
+class Object: Hashable {
+    static func == (lhs: Object, rhs: Object) -> Bool {
+        lhs.value == rhs.value
+    }
     
+    var value: Int = 0
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(value)
+    }
 }
