@@ -20,9 +20,9 @@ extension UIView {
     @objc func rts_didMoveToSuperview() {
         rts_didMoveToSuperview()
         
-        if let trackableView = self as? UITableView {
-            if !viewReferences.contains(trackableView) {
-                viewReferences.add(trackableView)
+        if let tableView = self as? UITableView {
+            if !tableViewReferences.contains(tableView) {
+                tableViewReferences.add(tableView)
             }
         }
     }

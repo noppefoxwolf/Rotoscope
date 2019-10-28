@@ -1,6 +1,6 @@
 import UIKit
 
-public var viewReferences: WeakObjectSet<UIView> = .init([])
+public var tableViewReferences: WeakObjectSet<UITableView> = .init([])
 
 public enum Rotoscope {
     public static func install() {
