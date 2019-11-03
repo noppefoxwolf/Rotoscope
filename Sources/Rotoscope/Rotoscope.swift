@@ -21,7 +21,7 @@ struct TagModifier: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             content
-            Tag(tag: tag)
+            Tag(tag: tag).frame(width: 0, height: 0)
         }
     }
 }
