@@ -37,6 +37,7 @@ struct Tag: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<Tag>) {
         uiView.tag = tag
         uiView.frame = .zero
+        uiView.isUserInteractionEnabled = false
         uiView.backgroundColor = .clear
     }
 }
