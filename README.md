@@ -1,6 +1,6 @@
 # Rotoscope
 
-Rotoscode provide function that to retrieve UIKit view that tagged it.
+Rotoscode provide function that to retrieve tagged UIView.
 
 # Usage
 
